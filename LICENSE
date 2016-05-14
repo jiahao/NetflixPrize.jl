@@ -1,3 +1,9 @@
+The code for this package is available under the MIT Licence,
+whereas the data provided by this package is redistributed under the
+Netflix Prize Usage License.
+
+------------------------------------------------------------------------------
+
 The MIT License (MIT)
 
 Copyright (c) 2016 Jiahao Chen
@@ -19,3 +25,26 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+------------------------------------------------------------------------------
+
+Netflix can not guarantee the correctness of the data, its suitability for any
+particular purpose, or the validity of results based on the use of the data set.
+The data set may be used for any research purposes under the following
+conditions:
+
+     * The user may not state or imply any endorsement from Netflix.
+
+     * The user must acknowledge the use of the data set in
+       publications resulting from the use of the data set, and must
+       send us an electronic or paper copy of those publications.
+
+     * The user may not redistribute the data without separate
+       permission.
+
+     * The user may not use this information for any commercial or
+       revenue-bearing purposes without first obtaining permission
+       from Netflix.
+
+If you have any further questions or comments, please contact the Prize
+administrator <prizemaster@netflix.com>
