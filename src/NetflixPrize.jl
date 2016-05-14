@@ -15,7 +15,7 @@ function parseall(dir, outputfile="../data/training_set.jld")
     info("Parsing training set")
 
     maxusers, allmovies, allnrows, allusers, allratings =
-    pmap(glob(joinpath(dir, "mv_*.txt"))) do file
+    @time pmap(glob(joinpath(dir, "mv_*.txt"))) do file
         movieid, userratings = parsefile(file)
         users =  map(Int, sub(userratings,:,1))
         ratings = map(Int, sub(userratings,:,2))
