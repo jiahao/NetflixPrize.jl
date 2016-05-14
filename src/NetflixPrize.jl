@@ -10,7 +10,7 @@ function parsefile(filename)
     movieid, userratings
 end
 
-function parseall(dir, outputfile="training_set.jld")
+function parseall(dir, outputfile="../data/training_set.jld")
     info("Parsing training set")
 
     movies=Dict{Int,Array}()
@@ -19,12 +19,10 @@ function parseall(dir, outputfile="training_set.jld")
 
     @showprogress for file in readdir(dir)
         file == "max.txt" && continue
-        info(joinpath(dir, file))
         movieid, userratings = parsefile(joinpath(dir, file))
         movies[movieid] = userratings
         maxuser = max(maxuser, maximum(sub(userratings,:,1)))
         maxmovieid = max(maxmovieid, movieid)
-        break
     end
 
     info("Generating $maxuser x $maxmovieid sparse matrix")
@@ -40,4 +38,9 @@ function parseall(dir, outputfile="training_set.jld")
     JLD.save(outputfile, "data", M)
 end
 
-parseall("../deps/data/download/training_set")
+datadir = "../data/download/training_set"
+if isdir(datadir)
+    parseall(datadir)
+else
+    error("Place Netflix Prize training set in $datadir/mv_*.txt")
+end
