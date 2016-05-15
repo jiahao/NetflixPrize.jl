@@ -13,13 +13,8 @@ How to use
 1. Place the downloaded training set tarball `nf_prize_dataset.tar.gz` in
    `~/Downloads` or in the `data/` subdirectory under the package name.
 
-2. Load the package:
 
-   ```jl
-   using NetflixPrize
-   ```
-
-2. (Optional) Fire up some Julia workers on the current node, e.g.
+2. (Optional but recommended) Fire up some Julia workers on the current node, e.g.
    
    ```jl
    addprocs(4)
@@ -27,8 +22,19 @@ How to use
 
    These extra workers will be used in the next step to speed up data processing.
 
+3. Load the package:
 
-3. To return the data set as a sparse matrix, run
+   ```jl
+   @everywhere using NetflixPrize
+   ```
+
+   If you are not using multiple workers, just run
+
+   ```jl
+   using NetflixPrize
+   ```
+
+4. To return the data set as a sparse matrix, run
 
    ```jl
    NetflixPrize.training_set()
@@ -42,6 +48,12 @@ How to use
    ID and columns indexed by user ID.
    (Note: the raw data also contains dates, which are not saved.)
    Parsing the entire training set can take some time.
+
+   ```
+   17770x2649429 sparse matrix with 100480507 UInt8 entries:
+           [30     ,       6]  =  0x03
+   ...
+   ```
 
 Citation
 --------
