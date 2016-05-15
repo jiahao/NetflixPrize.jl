@@ -55,6 +55,11 @@ How to use
    ...
    ```
 
+Once the file `data/training_set.jld` has been created, the original tarball
+and its unpacked contents can be deleted from `data/` without adversely
+affecting the functionality of this package.
+
+
 Citation
 --------
 
