@@ -10,22 +10,38 @@ Please note that the data set itself comes with a separate license agreement.
 How to use
 ----------
 
-1. Place the downloaded training set tarball `nf_prize_dataset.tar.gz` in the
-   `data/` directory and untar it with
+1. Place the downloaded training set tarball `nf_prize_dataset.tar.gz` in
+   `~/Downloads` or in the `data/` subdirectory under the package name.
 
-    ```
-    tar xzf nf_prize_dataset.tar.gz
-    cd download
-    tar xf training_set.tar
-```
+2. Load the package:
 
-2. Loading the package will parse all the text files and create a JLD binary
-   file, `data/training_set.jld`, containing a sparse matrix containing
-   ratings, with rows indexed by movie ID and columns indexed by user ID.
+   ```jl
+   using NetflixPrize
+   ```
+
+2. (Optional) Fire up some Julia workers on the current node, e.g.
+   
+   ```jl
+   addprocs(4)
+   ```
+
+   These extra workers will be used in the next step to speed up data processing.
+
+
+3. To return the data set as a sparse matrix, run
+
+   ```jl
+   NetflixPrize.load()
+   ```
+
+   Where needed, `load()` will copy the tarball into the package subtree,
+   unpack the tarball, parse all the text files belonging to the training set,
+   and save the resulting sparse matrix in a local JLD (Julia data) file.
+   
+   The output is a sparse matrix containing ratings, with rows indexed by movie
+   ID and columns indexed by user ID.
    (Note: the raw data also contains dates, which are not saved.)
-   Parsing the entire training set takes about 10-20 minutes.
-
-
+   Parsing the entire training set can take some time.
 
 Citation
 --------
