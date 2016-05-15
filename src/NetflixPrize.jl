@@ -31,14 +31,15 @@ function parseall(datadir, outputfile=joinpath(Pkg.dir("NetflixPrize"), "data", 
     allusers = [item[4] for item in parsed_data]
     allratings = [item[5] for item in parsed_data]
 
-    # info("Saving intermediate data set to $outputfile")
-    # JLD.save(outputfile,
-    #     "maxusers", maxusers,
-    #     "allmovies", allmovies,
-    #     "allnrows", allnrows,
-    #     "allusers", allusers,
-    #     "allratings", allratings
-    # )
+    info("Saving intermediate data set to $outputfile")
+    JLD.save(outputfile,
+        "maxusers", maxusers,
+        "allmovies", allmovies,
+        "allnrows", allnrows,
+        "allusers", allusers,
+        "allratings", allratings,
+          compress=true
+    )
 
     maxuser=maximum(maxusers)
     maxmovieid=maximum(allmovies)
@@ -64,7 +65,7 @@ function parseall(datadir, outputfile=joinpath(Pkg.dir("NetflixPrize"), "data", 
     @time M = sparse(Is, Js, Vs)
 
     info("Saving training set to $outputfile")
-    JLD.save(outputfile, "data", M)
+    JLD.save(outputfile, "data", M, compress=true)
 end
 
 function training_set()
