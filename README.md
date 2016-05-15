@@ -31,10 +31,10 @@ How to use
 3. To return the data set as a sparse matrix, run
 
    ```jl
-   NetflixPrize.load()
+   NetflixPrize.training_set()
    ```
 
-   Where needed, `load()` will copy the tarball into the package subtree,
+   Where needed, the function will copy the tarball into the package subtree,
    unpack the tarball, parse all the text files belonging to the training set,
    and save the resulting sparse matrix in a local JLD (Julia data) file.
    

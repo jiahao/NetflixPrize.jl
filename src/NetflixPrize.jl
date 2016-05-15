@@ -67,7 +67,7 @@ function parseall(datadir, outputfile=joinpath(Pkg.dir("NetflixPrize"), "data", 
     JLD.save(outputfile, "data", M)
 end
 
-function load()
+function training_set()
     const datadir = joinpath(Pkg.dir("NetflixPrize"), "data/download/training_set")
     const datafile = joinpath(Pkg.dir("NetflixPrize"), "data/training_set.jld")
     const tarball = joinpath(Pkg.dir("NetflixPrize"), "data/nf_prize_dataset.tar.gz")
